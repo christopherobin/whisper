@@ -17,7 +17,7 @@ class Autoload {
 		$namespace = explode('\\', $classname);
 		$class = array_pop($namespace);
 		/* only manage autoload for Whisper classes */
-		if (array_shift($namespace) != 'Whisper') {
+		if (array_shift($namespace) !== 'Whisper') {
 			return;
 		}
 		$include_file = '';
@@ -27,6 +27,6 @@ class Autoload {
 		}
 		$include_file .= $class . '.php';
 
-		include_once($include_file);
+		include_once $include_file;
 	}
 }
