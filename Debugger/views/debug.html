@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style type="text/css">
+* {
+	padding: 0;
+	margin: 0;
+}
+body {
+	background: #2E2E2E;
+	padding: 20px;
+}
+div#content {
+	background: #e7e7e7;
+	padding: 5px;
+}
+div#content h4 {
+	padding-left: 15px;
+}
+div#content ul {
+	list-style: none;
+}
+div#content ul li {
+	background: #c9c9c9;
+	padding: 10px;
+}
+pre.code {
+	border: 1px dashed #D7B67C;
+	background-color:#1a1a1a;
+	color:white;
+	padding: 3px;
+}
+		</style>
+	</head>
+	<body>
+		<div id="content">
+			<h1>{{ type }}</h1>
+			<h4>{{ exception.getMessage() }}</h4>
+			<br/>
+			<h2>Backtrace</h2>
+			<div id="backtrace">
+				<ul>
+				{% for trace in traces %}
+					<li>
+						<span>File <em>{{ trace.file|default('Unknown') }}</em>, line {{ trace.line|default('Unknown') }}, in {{ trace.function }}</span>
+						<pre class="code">{{ trace.code|default('No code to show') }}</pre>
+					</li>
+				{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>
